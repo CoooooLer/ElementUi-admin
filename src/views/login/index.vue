@@ -57,9 +57,22 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
-          window.localStorage.setItem('login', this.ruleForm.username);
-          this.$router.push({ path: '/' });
+          console.log(this.ruleForm.username)
+          this.$axios.post('http://192.168.0.190/api/admin/doLogin', {
+              'username': this.ruleForm.username,
+              'password': this.ruleForm.pass,
+          }).then(res => {
+            console.log(res.data);
+            if (res.data.code == '000000') {
+              window.localStorage.setItem('login', this.ruleForm.username);
+              this.$router.push({ path: '/' });
+            } else {
+              // res.data.errorMessage
+              this.openError(res.data.errorMessage);
+            }
+          }).catch(err => {
+            this.openError(err);
+          });
         } else {
           console.log('error submit!!');
           return false;
@@ -68,6 +81,13 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    openError(errorMessage) {
+      this.$message({
+        showClose: true,
+        message: errorMessage,
+        type: 'error',
+      });
     },
   },
 };

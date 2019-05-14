@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="header">
     <div class="line"></div>
     <el-menu
       :default-active="activeIndex2"
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
+      background-color="#ffffff"
+      text-color="#000"
       active-text-color="#ffd04b">
 <!--      <el-menu-item index="1">处理中心</el-menu-item>-->
       <el-submenu index="2">
@@ -47,6 +47,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  li
-    float right!important
+  .header
+    width 100%
+    li
+      float right!important
 </style>

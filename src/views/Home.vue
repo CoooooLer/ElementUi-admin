@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div class="box">
 <!--    <el-container style="height: 500px; border: 1px solid #eee">-->
 <!--      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">-->
-    <Header></Header>
+    <left-menu></left-menu>
     <div class="content-box">
-      <left-menu></left-menu>
+      <Header></Header>
       132
     </div>
   </div>
@@ -40,10 +40,5 @@ export default {
 
 
 <style lang="stylus" scoped>
-  body
-    background #eef0f5
-  .content-box
-    background aquamarine
-    width 100%
-    display flex
+
 </style>
